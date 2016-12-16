@@ -12,29 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using OpenE6B.Classes;
 using OpenE6B.ViewModels;
 
 namespace OpenE6B.Pages
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for MetarTaf.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class MetarTaf : Page
     {
-        public MainMenu()
+        public MetarTaf(MetarTafViewModel model)
         {
             InitializeComponent();
-        }
-
-        private void BtnMetar_Click(object sender, RoutedEventArgs e)
-        {
-            var frame = UIHelper.FindVisualParent<Frame>(this);
-            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            var metarPage = new MetarTaf(new MetarTafViewModel());
-            frame.Content = metarPage;
-
-
+            DataContext = model;
         }
     }
 }

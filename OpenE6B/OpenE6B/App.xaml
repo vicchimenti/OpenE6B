@@ -16,6 +16,9 @@
             <Setter Property="FontSize" Value="30" />
             <Setter Property="Foreground" Value="WhiteSmoke" />
         </Style>
+        <Style x:Key="WhiteLabel" TargetType="Label">
+            <Setter Property="Foreground" Value="WhiteSmoke"></Setter>
+        </Style>
         <FontFamily x:Key="TitleFont">Agency FB</FontFamily>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -54,7 +57,7 @@
                                     <GradientStop Color="#FF02077A" Offset="1"/>
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <TextBox x:Name="textBox" Height="Auto" TextWrapping="Wrap" Text="{TemplateBinding Content}" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" FontFamily="Agency FB" FontSize="18.667" FontWeight="Bold" Foreground="White"/>
+                            <TextBlock x:Name="textBox" Height="Auto" TextWrapping="Wrap" Text="{TemplateBinding Content}" Width="Auto" Background="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" FontFamily="Agency FB" FontSize="18.667" FontWeight="Bold" Foreground="White"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true">

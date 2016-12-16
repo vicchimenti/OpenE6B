@@ -5,15 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OpenE6B.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="400"
+      d:DesignHeight="350" d:DesignWidth="400"
       Title="MainMenu">
 
     <Grid>
         <StackPanel>
-            <TextBlock Foreground="WhiteSmoke" Text="Main Menu" FontSize="18" HorizontalAlignment="Center" />
+            <TextBlock Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Center" Text="Main Menu" />
             <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button Content="Metar/TAF" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
-                <Button Content="Metar/TAF" Style="{DynamicResource MainMenuButton}" Width="150" />
+                <Button x:Name="BtnMetar" Content="Metar" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" Click="BtnMetar_Click" />
+                <Button x:Name="BtnIsa" Content="ISA Deviation" Style="{DynamicResource MainMenuButton}" Width="150" />
+            </DockPanel>
+            <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                <Button x:Name="BtnWindComp" Content="Wind Component" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
+                <Button x:Name="BtnPayload" Content="Payload" Style="{DynamicResource MainMenuButton}" Width="150" />
+            </DockPanel>
+            <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                <Button x:Name="BtnPressureAlt" Content="Pressure Altitude" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
+                <Button x:Name="BtnFlightPlan" Content="Flight Plan" Style="{DynamicResource MainMenuButton}" Width="150" />
+            </DockPanel>
+            <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                <Button x:Name="BtnWeightBal" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" >Weight &amp; Balance</Button>
+                <Button x:Name="BtnRunwaySlope" Content="Runway Slope" Style="{DynamicResource MainMenuButton}" Width="150" />
+            </DockPanel>
+            <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                <Button x:Name="BtnConversions" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,0,0" >Conversions</Button>
+
             </DockPanel>
         </StackPanel>
     </Grid>

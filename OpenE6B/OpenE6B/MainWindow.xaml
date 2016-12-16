@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenE6B"
         mc:Ignorable="d"
-        Title="OpenE6B | Open Source Aviation Calculator" d:DesignHeight="450" d:DesignWidth="650" SizeToContent="WidthAndHeight">
+        Title="OpenE6B | Open Source Aviation Calculator" d:DesignHeight="450" d:DesignWidth="650" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
     <Grid Background="{StaticResource BackgroundGradient}">
         <StackPanel>
             <TextBlock Style="{StaticResource HeaderTextBlock}" Text="OpenE6B" Margin="0,10,0,0" />
