@@ -5,9 +5,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using OpenE6B.Annotations;
 using OpenE6B.Classes;
+using OpenE6B.Pages;
 
 namespace OpenE6B.ViewModels
 {
@@ -15,6 +18,7 @@ namespace OpenE6B.ViewModels
     {
         private string _stationId;
         private string _rawMetarText;
+        private bool _isButtonEnabled;
 
         public string StationId 
         {
@@ -24,6 +28,7 @@ namespace OpenE6B.ViewModels
                 if (value == _stationId) return;
                 _stationId = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(IsButtonEnabled));
             }
         }
 
@@ -39,14 +44,40 @@ namespace OpenE6B.ViewModels
         }
         public Metar Metar { get; set; }
         public IAsyncCommand GetMetarCommand { get; set; }
+        public ICommand MainMenuCommand { get; set; }
+
+        public bool IsButtonEnabled
+        {
+            get
+            {   
+                return CanRetrieve();
+            }
+            set
+            {
+                if (value == _isButtonEnabled) return;
+                _isButtonEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public MetarTafViewModel()
         {
             var retriever = new MetarRetriever();
             GetMetarCommand = new AsyncCommand<Metar>(() => retriever.GetMetar(StationId));
+            MainMenuCommand = new RelayCommand(GoToMainMenu);
         }
 
+        public bool CanRetrieve()
+        {
+            return !string.IsNullOrWhiteSpace(StationId) && StationId.Length == 4;
+        }
 
+        public void GoToMainMenu(object param)
+        {
+            var frame = UIHelper.FindVisualParent<Frame>(param as DependencyObject);
+            frame.Content = new MainMenu();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

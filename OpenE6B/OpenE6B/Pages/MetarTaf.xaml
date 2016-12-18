@@ -8,7 +8,7 @@
       xmlns:local="clr-namespace:OpenE6B.Pages"
       xmlns:converters="clr-namespace:OpenE6B.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="400"
+      d:DesignHeight="400" d:DesignWidth="400"
       d:DataContext="{d:DesignInstance viewModels:MetarTafViewModel}"
       Width="400"
       Title="MetarTaf">
@@ -17,40 +17,73 @@
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
     </Page.Resources>
 
-    <Grid Background="{StaticResource BackgroundGradient}">
-        <StackPanel>
-            <TextBlock Style="{StaticResource HeaderTextBlock}">Metar</TextBlock>
-            <Separator Background="WhiteSmoke" Margin="20,2" />
-            <DockPanel Margin="20,10,20,20">
-                <Label Style="{StaticResource WhiteLabel}">Station ID:</Label>
-                <TextBox Name="TbStationId" Width="100" Margin="0,0,10,0">
-                    <TextBox.Text>
-                        <Binding Path="StationId" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <validators:StringToStationValidationRule ValidationStep="RawProposedValue" />
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                    <Validation.ErrorTemplate>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <AdornedElementPlaceholder x:Name="textBox" ></AdornedElementPlaceholder>
-                                <TextBlock Foreground="Red" Text="{Binding ElementName=textBox, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Validation.ErrorTemplate>
-                </TextBox>
-                <Button Command="{Binding GetMetarCommand}" Template="{DynamicResource BlueButton}"> Retrieve</Button>
-            </DockPanel>
-            <Separator Background="WhiteSmoke" Margin="20,2" />
-            <TextBlock Style="{StaticResource HeaderTextBlock}" FontSize="16">Station Weather</TextBlock>
-            <DockPanel Margin="15,0,0,0">
-                <Label Style="{StaticResource WhiteLabel}">Metar Raw:</Label>
-                <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.RawText}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
-            </DockPanel>
-            <DockPanel Dock="Bottom" Margin="5,10,0,5" Width="150">
-                <Button Template="{DynamicResource BlueButton}">Back to Main Menu</Button>
-            </DockPanel>
-        </StackPanel>
-    </Grid>
+    <Border BorderThickness="1" BorderBrush="WhiteSmoke">
+        <Grid Background="{StaticResource BackgroundGradient}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource HeaderTextBlock}">Metar</TextBlock>
+                <Separator Background="WhiteSmoke" Margin="20,2" />
+                <DockPanel Margin="20,10,20,20">
+                    <Label Style="{StaticResource WhiteLabel}">Station ID:</Label>
+                    <TextBox Name="TbStationId" Width="100" Margin="0,0,10,0">
+                        <TextBox.Text>
+                            <Binding Path="StationId" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <validators:StringToStationValidationRule ValidationStep="RawProposedValue" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder x:Name="textBox" ></AdornedElementPlaceholder>
+                                    <TextBlock Foreground="Red" Text="{Binding ElementName=textBox, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"></TextBlock>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                    <Button Command="{Binding GetMetarCommand}" Template="{DynamicResource BlueButton}" IsEnabled="{Binding IsButtonEnabled}" Content="Retrieve">
+
+                    </Button>
+                </DockPanel>
+                <Separator Background="WhiteSmoke" Margin="20,2" />
+                <TextBlock Style="{StaticResource HeaderTextBlock}" FontSize="16">Station Weather</TextBlock>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Metar Raw:</Label>
+                    <Grid Visibility="{Binding GetMetarCommand.Execution, Converter={StaticResource NullToVisibilityConverter}}">
+                        <TextBlock Foreground="White" TextWrapping="Wrap" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.RawText}" Visibility="{Binding GetMetarCommand.Execution.IsSuccessfullyCompleted, Converter={StaticResource NullToVisibilityConverter}}"/>
+                        <TextBlock Foreground="White" Margin="10,5,0,0" Text="Loading...." Visibility="{Binding GetMetarCommand.Execution.IsNotCompleted, Converter={StaticResource BooleanToVisibilityConverter}}"></TextBlock>
+                        <!--Error details-->
+                        <Label Content="{Binding GetMetarCommand.Execution.ErrorMessage}" Visibility="{Binding GetMetarCommand.Execution.IsFaulted, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="Red" />
+                    </Grid>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Obs. Time:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.Time, StringFormat={}{0: MM/dd/yyyy HH:mm }Z}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Temperature:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.Temp, StringFormat={}{0}C}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Dew Point:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.DewPoint, StringFormat={}{0}C}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Wind:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.Wind, StringFormat={}{0}}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Visibility:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.Visibility, StringFormat={}{0} SM}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Margin="15,0">
+                    <Label Style="{StaticResource WhiteLabel}">Sky Condition:</Label>
+                    <TextBlock Foreground="White" Margin="10,5,0,0" TextWrapping="Wrap" Text="{Binding GetMetarCommand.Execution.Result.SkyCondition, StringFormat={}{0}}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+                </DockPanel>
+                <DockPanel Dock="Bottom" Margin="5,10,0,5" Width="150">
+                    <Button Name="BtnMainMenu" Template="{DynamicResource BlueButton}" Command="{Binding MainMenuCommand}" CommandParameter="{Binding ElementName=BtnMainMenu}">Back to Main Menu</Button>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Page>

@@ -47,6 +47,7 @@ namespace OpenE6B.Classes
 
         public override bool CanExecute(object parameter)
         {
+
             return Execution == null || Execution.IsCompleted;
         }
 
