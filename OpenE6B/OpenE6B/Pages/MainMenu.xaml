@@ -9,28 +9,30 @@
       Title="MainMenu">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Center" Text="Main Menu" />
-            <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button x:Name="BtnMetar" Content="Metar" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" Click="BtnMetar_Click" />
-                <Button x:Name="BtnIsa" Content="ISA Deviation" Style="{DynamicResource MainMenuButton}" Width="150" />
-            </DockPanel>
-            <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button x:Name="BtnWindComp" Content="Wind Component" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
-                <Button x:Name="BtnPayload" Content="Payload" Style="{DynamicResource MainMenuButton}" Width="150" />
-            </DockPanel>
-            <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button x:Name="BtnPressureAlt" Content="Pressure Altitude" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
-                <Button x:Name="BtnFlightPlan" Content="Flight Plan" Style="{DynamicResource MainMenuButton}" Width="150" />
-            </DockPanel>
-            <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button x:Name="BtnWeightBal" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" >Weight &amp; Balance</Button>
-                <Button x:Name="BtnRunwaySlope" Content="Runway Slope" Style="{DynamicResource MainMenuButton}" Width="150" />
-            </DockPanel>
-            <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                <Button x:Name="BtnConversions" Style="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,0,0" >Conversions</Button>
+        <Border Padding="5" BorderThickness="1" BorderBrush="WhiteSmoke">
+            <StackPanel>
+                <TextBlock Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Center" Text="Main Menu" />
+                <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                    <Button x:Name="BtnMetar" Content="Metar" Width="150" Margin="0,0,20,0" Click="BtnMetar_Click" Template="{DynamicResource MainMenuButton}" />
+                    <Button x:Name="BtnIsa" Content="ISA Deviation" Template="{DynamicResource MainMenuButton}" Width="150" />
+                </DockPanel>
+                <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                    <Button x:Name="BtnWindComp" Content="Wind Component" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
+                    <Button x:Name="BtnPayload" Content="Payload" Template="{DynamicResource MainMenuButton}" Width="150" />
+                </DockPanel>
+                <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                    <Button x:Name="BtnPressureAlt" Content="Pressure Altitude" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
+                    <Button x:Name="BtnFlightPlan" Content="Flight Plan" Template="{DynamicResource MainMenuButton}" Width="150" />
+                </DockPanel>
+                <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                    <Button x:Name="BtnWeightBal" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" >Weight &amp; Balance</Button>
+                    <Button x:Name="BtnRunwaySlope" Content="Runway Slope" Template="{DynamicResource MainMenuButton}" Width="150" />
+                </DockPanel>
+                <DockPanel Margin="20,10" HorizontalAlignment="Center">
+                    <Button x:Name="BtnConversions" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,0,0" >Conversions</Button>
 
-            </DockPanel>
-        </StackPanel>
+                </DockPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

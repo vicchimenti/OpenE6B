@@ -6,17 +6,22 @@
       xmlns:viewModels="clr-namespace:OpenE6B.ViewModels"
       xmlns:validators="clr-namespace:OpenE6B.Validators"
       xmlns:local="clr-namespace:OpenE6B.Pages"
+      xmlns:converters="clr-namespace:OpenE6B.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="400"
       d:DataContext="{d:DesignInstance viewModels:MetarTafViewModel}"
       Width="400"
       Title="MetarTaf">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    </Page.Resources>
 
-    <Grid>
+    <Grid Background="{StaticResource BackgroundGradient}">
         <StackPanel>
             <TextBlock Style="{StaticResource HeaderTextBlock}">Metar</TextBlock>
             <Separator Background="WhiteSmoke" Margin="20,2" />
-            <DockPanel Margin="20,0,20,20">
+            <DockPanel Margin="20,10,20,20">
                 <Label Style="{StaticResource WhiteLabel}">Station ID:</Label>
                 <TextBox Name="TbStationId" Width="100" Margin="0,0,10,0">
                     <TextBox.Text>
@@ -35,12 +40,16 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
-                <Button> Retrieve</Button>
+                <Button Command="{Binding GetMetarCommand}" Template="{DynamicResource BlueButton}"> Retrieve</Button>
             </DockPanel>
             <Separator Background="WhiteSmoke" Margin="20,2" />
             <TextBlock Style="{StaticResource HeaderTextBlock}" FontSize="16">Station Weather</TextBlock>
-            <DockPanel Dock="Bottom" Margin="5,10,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                <Button>Back to Main Menu</Button>
+            <DockPanel Margin="15,0,0,0">
+                <Label Style="{StaticResource WhiteLabel}">Metar Raw:</Label>
+                <TextBlock Foreground="White" Margin="10,5,0,0" Text="{Binding GetMetarCommand.Execution.Result.RawText}" Visibility="{Binding GetMetarCommand, Converter={StaticResource NullToVisibilityConverter}}"/>
+            </DockPanel>
+            <DockPanel Dock="Bottom" Margin="5,10,0,5" Width="150">
+                <Button Template="{DynamicResource BlueButton}">Back to Main Menu</Button>
             </DockPanel>
         </StackPanel>
     </Grid>
