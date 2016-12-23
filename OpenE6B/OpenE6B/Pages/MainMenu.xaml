@@ -14,7 +14,7 @@
                 <TextBlock Style="{StaticResource HeaderTextBlock}" HorizontalAlignment="Center" Text="Main Menu" />
                 <DockPanel Margin="20,10" HorizontalAlignment="Center">
                     <Button x:Name="BtnMetar" Content="Metar" Width="150" Margin="0,0,20,0" Click="BtnMetar_Click" Template="{DynamicResource MainMenuButton}" />
-                    <Button x:Name="BtnIsa" Content="ISA Deviation" Template="{DynamicResource MainMenuButton}" Width="150" />
+                    <Button x:Name="BtnIsa" Content="ISA Deviation" Template="{DynamicResource MainMenuButton}" Width="150" Click="BtnIsa_Click" />
                 </DockPanel>
                 <DockPanel Margin="20,10" HorizontalAlignment="Center">
                     <Button x:Name="BtnWindComp" Content="Wind Component" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />

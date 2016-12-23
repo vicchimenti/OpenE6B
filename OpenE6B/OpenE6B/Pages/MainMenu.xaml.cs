@@ -36,5 +36,13 @@ namespace OpenE6B.Pages
 
 
         }
+
+        private void BtnIsa_Click(object sender, RoutedEventArgs e)
+        {
+            var frame = UIHelper.FindVisualParent<Frame>(this);
+            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            var isaPage = new ISADevPage(new IsaDevViewModel());
+            frame.Content = isaPage;
+        }
     }
 }

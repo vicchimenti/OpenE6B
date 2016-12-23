@@ -1,0 +1,39 @@
+﻿<Page x:Class="OpenE6B.Pages.ISADevPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OpenE6B.Pages"
+      xmlns:viewModels="clr-namespace:OpenE6B.ViewModels"
+      xmlns:converters="clr-namespace:OpenE6B.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      d:DataContext="{d:DesignInstance viewModels:IsaDevViewModel}"
+      Title="ISADevPage">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    </Page.Resources>
+    <Grid Name="IsaGrid">
+        <StackPanel>
+            <TextBlock Style="{StaticResource HeaderTextBlock}">ISA Deviation</TextBlock>
+            <Separator Background="WhiteSmoke" Margin="5,0"></Separator>
+            <TextBlock Foreground="WhiteSmoke" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Center" Margin="0,5,0,0"> Altitude and Temperature</TextBlock>
+            <TextBlock Foreground="WhiteSmoke" FontSize="12" FontFamily="Agency FB" HorizontalAlignment="Center" > Enter the Following</TextBlock>
+            <DockPanel Margin="5,5,5,0" HorizontalAlignment="Center">
+                <Label Style="{StaticResource WhiteLabel}">Temp (C) at Altitude</Label>
+                <TextBox  Margin="5,0,0,0" Width="100" Text="{Binding TemperatureC}" />
+            </DockPanel>
+            <DockPanel Margin="50,5,5,0" HorizontalAlignment="Center">
+                <Label Style="{StaticResource WhiteLabel}" Margin="0,0,0,0">Altitude (ft)</Label>
+                <TextBox Margin="5,0,0,0" Width="100px" Text="{Binding Altitude}" />
+            </DockPanel>
+            <Button Template="{StaticResource BlueButton}" HorizontalAlignment="Center" Width="80" Height="25" Margin="0,10,0,0" Command="{Binding CalculateDeviationCommand}"> Calculate</Button>
+            <Separator Background="WhiteSmoke" Margin="5,5,5,0"></Separator>
+            <TextBlock Foreground="WhiteSmoke" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Center" Margin="0,5,0,0"> Results</TextBlock>
+            <TextBlock Foreground="WhiteSmoke" FontSize="22" FontWeight="SemiBold" FontFamily="Agency FB" HorizontalAlignment="Center" Text="{Binding Result}" Visibility="{Binding Result, Converter={StaticResource NullToVisibilityConverter}}" Margin="0,5,0,0"></TextBlock>
+            <Separator Background="WhiteSmoke" Margin="5,5,5,0"></Separator>
+            <Button Template="{StaticResource BlueButton}" HorizontalAlignment="Left" Margin="10,10,0,0" Command="{Binding MainMenuCommand}" CommandParameter="{Binding ElementName=IsaGrid}" Width="105" Height="25">Back to Main Menu</Button>
+        </StackPanel>
+    </Grid>
+</Page>

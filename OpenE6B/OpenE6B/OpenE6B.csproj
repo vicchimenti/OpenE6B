@@ -56,12 +56,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\IAsyncCommand.cs" />
+    <Compile Include="Classes\IsaDevCalculator.cs" />
     <Compile Include="Classes\Metar.cs" />
     <Compile Include="Classes\NotifyTaskCompletion.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Pages\ISADevPage.xaml.cs">
+      <DependentUpon>ISADevPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Validators\StringToStationValidationRule.cs" />
+    <Compile Include="ViewModels\ISADevViewModel.cs" />
     <Compile Include="ViewModels\MetarTafViewModel.cs" />
     <Page Include="BlueButton.xaml">
       <SubType>Designer</SubType>
@@ -88,6 +93,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ISADevPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

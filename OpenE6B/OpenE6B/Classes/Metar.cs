@@ -58,7 +58,6 @@ namespace OpenE6B.Classes
         private async Task<Metar> MakeRequest()
         {
             var metar = new Metar();
-            await Task.Delay(3000);
             HttpClient client = new HttpClient();
             var dataStream = await client.GetStreamAsync(RequestString);
 
