@@ -64,10 +64,14 @@
     <Compile Include="Pages\ISADevPage.xaml.cs">
       <DependentUpon>ISADevPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WindCompPage.xaml.cs">
+      <DependentUpon>WindCompPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Validators\StringToStationValidationRule.cs" />
     <Compile Include="ViewModels\ISADevViewModel.cs" />
     <Compile Include="ViewModels\MetarTafViewModel.cs" />
+    <Compile Include="ViewModels\WindCompViewModel.cs" />
     <Page Include="BlueButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MetarTaf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WindCompPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
