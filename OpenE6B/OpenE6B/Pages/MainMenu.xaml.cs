@@ -44,5 +44,13 @@ namespace OpenE6B.Pages
             var isaPage = new ISADevPage(new IsaDevViewModel());
             frame.Content = isaPage;
         }
+
+        private void BtnWindComp_Click(object sender, RoutedEventArgs e)
+        {
+            var frame = UIHelper.FindVisualParent<Frame>(this);
+            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            var windPage = new WindCompPage(new WindCompViewModel());
+            frame.Content = windPage;
+        }
     }
 }

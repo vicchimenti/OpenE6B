@@ -4,29 +4,36 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OpenE6B.Pages"
+      xmlns:converters="clr-namespace:OpenE6B.Converters"
+      xmlns:viewModels="clr-namespace:OpenE6B.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+      d:DataContext="{d:DesignInstance viewModels:WindCompViewModel}"
       Title="WindCompPage">
+    <Page.Resources>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </Page.Resources>
 
-    <Grid Background="{StaticResource BackgroundGradient}">
+    <Grid Name="WindCompGrid" Background="{StaticResource BackgroundGradient}">
         <StackPanel>
             <TextBlock Style="{StaticResource HeaderTextBlock}" Text="Wind Component" />
             <Separator Background="WhiteSmoke" Margin="5,2" ></Separator>
             <TextBlock Foreground="WhiteSmoke" FontSize="14" FontFamily="Agency FB" HorizontalAlignment="Center" Text="Enter Wind Data" />
             <DockPanel HorizontalAlignment="Center" Margin="0,5,0,0">
                 <Label Style="{StaticResource WhiteLabel}">Wind Speed:</Label>
-                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" />
+                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" Text="{Binding WindSpeed}" />
                 <Label Style="{StaticResource WhiteLabel}">Direction:</Label>
-                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" />
+                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" Text="{Binding WindDirection}" />
             </DockPanel>
-            <DockPanel HorizontalAlignment="Left" Margin="16,5,0,0">
+            <DockPanel HorizontalAlignment="Left" Margin="17,5,0,0">
                 <Label Style="{StaticResource WhiteLabel}">RWY Heading:</Label>
-                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" />
-                <Button Template="{StaticResource BlueButton}" Width="80" Margin="20,0,0,0">Calculate</Button>
+                <TextBox Margin="5,0,0,0" Width="50" HorizontalAlignment="Left" Text="{Binding RunwayHeading}" />
+                <Button Template="{StaticResource BlueButton}" Width="80" Margin="38,0,0,0" Command="{Binding CalculateCommand}">Calculate</Button>
             </DockPanel>
             <Separator Background="WhiteSmoke" Margin="5,10,5,2" ></Separator>
             <TextBlock Foreground="WhiteSmoke" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Center" Text="Results" />
-            <TextBlock Foreground="WhiteSmoke" FontSize="20" FontWeight="SemiBold" FontFamily="Agency FB" HorizontalAlignment="Center" Text="" />
+            <TextBlock Foreground="WhiteSmoke" FontSize="20" FontWeight="SemiBold" FontFamily="Agency FB" HorizontalAlignment="Center" Text="{Binding Result}" Visibility="{Binding Result, Converter={StaticResource NullToVisibilityConverter}}" />
+            <Button Template="{StaticResource BlueButton}" Width="100" Command="{Binding MainMenuCommand}" CommandParameter="{Binding ElementName=WindCompGrid}" HorizontalAlignment="Left" Margin="20,20,0,0">Main Menu</Button>
         </StackPanel>
     </Grid>
 </Page>

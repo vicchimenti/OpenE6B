@@ -17,7 +17,7 @@
                     <Button x:Name="BtnIsa" Content="ISA Deviation" Template="{DynamicResource MainMenuButton}" Width="150" Click="BtnIsa_Click" />
                 </DockPanel>
                 <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                    <Button x:Name="BtnWindComp" Content="Wind Component" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" />
+                    <Button x:Name="BtnWindComp" Content="Wind Component" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,20,0" Click="BtnWindComp_Click" />
                     <Button x:Name="BtnPayload" Content="Payload" Template="{DynamicResource MainMenuButton}" Width="150" />
                 </DockPanel>
                 <DockPanel Margin="20,10" HorizontalAlignment="Center">

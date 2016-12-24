@@ -60,6 +60,7 @@
     <Compile Include="Classes\Metar.cs" />
     <Compile Include="Classes\NotifyTaskCompletion.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
+    <Compile Include="Classes\WindComponentSolver.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Pages\ISADevPage.xaml.cs">
       <DependentUpon>ISADevPage.xaml</DependentUpon>
