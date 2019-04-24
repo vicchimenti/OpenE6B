@@ -29,7 +29,7 @@
                     <Button x:Name="BtnRunwaySlope" Content="Runway Slope" Template="{DynamicResource MainMenuButton}" Width="150" />
                 </DockPanel>
                 <DockPanel Margin="20,10" HorizontalAlignment="Center">
-                    <Button x:Name="BtnConversions" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,0,0" >Conversions</Button>
+                    <Button x:Name="BtnConversions" Template="{DynamicResource MainMenuButton}" Width="150" Margin="0,0,0,0" >Temperature Conversion</Button>
 
                 </DockPanel>
             </StackPanel>

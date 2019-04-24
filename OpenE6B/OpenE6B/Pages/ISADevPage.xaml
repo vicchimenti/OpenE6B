@@ -33,7 +33,7 @@
             <TextBlock Foreground="WhiteSmoke" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Center" Margin="0,5,0,0"> Results</TextBlock>
             <TextBlock Foreground="WhiteSmoke" FontSize="22" FontWeight="SemiBold" FontFamily="Agency FB" HorizontalAlignment="Center" Text="{Binding Result}" Visibility="{Binding Result, Converter={StaticResource NullToVisibilityConverter}}" Margin="0,5,0,0"></TextBlock>
             <Separator Background="WhiteSmoke" Margin="5,5,5,0"></Separator>
-            <Button Template="{StaticResource BlueButton}" HorizontalAlignment="Left" Margin="10,10,0,0" Command="{Binding MainMenuCommand}" CommandParameter="{Binding ElementName=IsaGrid}" Width="105" Height="25">Back to Main Menu</Button>
+            <Button Template="{StaticResource BlueButton}" HorizontalAlignment="Center" Margin="10,10,0,0" Command="{Binding MainMenuCommand}" CommandParameter="{Binding ElementName=IsaGrid}" Width="145" Height="35">Back to Main Menu</Button>
         </StackPanel>
     </Grid>
 </Page>
