@@ -46,7 +46,6 @@ namespace OpenE6B.Classes
         public MetarRetriever()
         {
             BaseUrl = Resources.MetarRequestBaseString;
-            // testing comments
         }
 
         public async Task<Metar> GetMetar(string stationId)
