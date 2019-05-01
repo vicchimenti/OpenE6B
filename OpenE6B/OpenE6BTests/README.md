@@ -1,6 +1,6 @@
 # OpenE6B Testing project
 
-Testing features and functions from project using MSTest.
+Testing features and functions from project using MSTest. Unit testing is preformed.
 
 ## Instructions to run tests
 - Open OpenE6B project solution in Visual Code.
