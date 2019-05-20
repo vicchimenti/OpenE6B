@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using OpenE6B.Annotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenE6B.Classes
 {
@@ -15,12 +16,12 @@ namespace OpenE6B.Classes
         Task ExecuteAsync(object parameter);
         
     }
-
+    
     public abstract class AsyncCommandBase : IAsyncCommand
     {
         public abstract bool CanExecute(object parameter);
         public abstract Task ExecuteAsync(object parameter);
-        public async void Execute(object parameter)
+        public virtual async void Execute(object parameter)
         {
             await ExecuteAsync(parameter);
         }
@@ -35,6 +36,7 @@ namespace OpenE6B.Classes
         }
     }
 
+    
     public class AsyncCommand<TResult> : AsyncCommandBase, INotifyPropertyChanged
     {
         private readonly Func<Task<TResult>> _command;
@@ -78,6 +80,7 @@ namespace OpenE6B.Classes
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public static class AsyncCommand
     {
         public static AsyncCommand<object> Create(Func<Task> command)
