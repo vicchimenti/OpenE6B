@@ -15,11 +15,19 @@ namespace OpenE6B.Converters.Tests
         NullToVisibilityConverter nVC = new NullToVisibilityConverter();
 
         [TestMethod()]
-        public void ConvertTest()
+        public void ConvertTest_Object_Is_Null()
         {
             // nVC.Convert(null, null, null, new System.Globalization.CultureInfo("en-us"));
 
             Assert.AreEqual(Visibility.Collapsed, nVC.Convert(null, null, null, new System.Globalization.CultureInfo("en-us")));
+        }
+
+        [TestMethod()]
+        public void ConvertTest_Object_Not_Null()
+        {
+            // nVC.Convert(null, null, null, new System.Globalization.CultureInfo("en-us"));
+
+            Assert.AreEqual(Visibility.Visible, nVC.Convert(0, null, null, new System.Globalization.CultureInfo("en-us")));
         }
 
         [TestMethod()]
