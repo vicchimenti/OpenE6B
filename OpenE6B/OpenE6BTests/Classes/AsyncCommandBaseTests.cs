@@ -26,6 +26,17 @@ namespace OpenE6B.Classes.Tests
 
         }
 
+        //[TestMethod()]
+        //public void ExecuteTest1()
+        //{
+        //    var mock = new Mock<AsyncCommandBase>();
+        //    mock.CallBase = true;
+        //    var ta = mock.Object;
+        //    ta.Execute(null);
+        //    mock.Verify(m => m.Execute(null), Times.Once());
+
+        //}
+
         [TestMethod()]
         public void CanExecuteTest()
         {

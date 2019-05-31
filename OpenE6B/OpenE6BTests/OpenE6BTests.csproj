@@ -80,6 +80,7 @@
     <Compile Include="Classes\IsaDevCalculatorTests.cs" />
     <Compile Include="Classes\MetarRetrieverTests.cs" />
     <Compile Include="Classes\NotifyTaskCompletionTests.cs" />
+    <Compile Include="Classes\RelayCommandTests.cs" />
     <Compile Include="Classes\WindComponentSolverTests.cs" />
     <Compile Include="Converters\NullToVisibilityConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
