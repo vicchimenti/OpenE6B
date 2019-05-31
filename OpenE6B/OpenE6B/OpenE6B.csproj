@@ -149,7 +149,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Scripts\RunUnitTests.ps1" />
+    <None Include="Scripts\StressTestApp.ps1" />
+    <None Include="Scripts\RunTestSuite.ps1" />
+    <None Include="Scripts\BuildTestSuite.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
