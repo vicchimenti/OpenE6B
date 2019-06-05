@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenE6B.Converters;
+using System.Diagnostics.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace OpenE6B.Converters.Tests
             Assert.AreEqual(Visibility.Visible, nVC.Convert(0, null, null, new System.Globalization.CultureInfo("en-us")));
         }
 
+        //[ExcludeFromCodeCoverage]
         [TestMethod()]
         public void ConvertBackTest()
         {
@@ -37,12 +39,11 @@ namespace OpenE6B.Converters.Tests
             {
                 nVC.ConvertBack(null, null, null, null);
             }
-            catch (NotImplementedException)
+            catch (NotImplementedException e)
             {
                 //  Expected exception caught!!!
-                return;
+                Assert.AreEqual("The method or operation is not implemented.", e.Message);
             }
-            Assert.Fail("Expected NotImplementedException not caught!");
         }
     }
 }

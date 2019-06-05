@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using System.Windows.Media;
 namespace OpenE6B.Classes
 {
     // ReSharper disable once InconsistentNaming
+    [ExcludeFromCodeCoverage]
     public static class UIHelper
     {
         /// <summary>

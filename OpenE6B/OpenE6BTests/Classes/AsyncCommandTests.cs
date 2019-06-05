@@ -20,8 +20,10 @@ namespace OpenE6B.Classes.Tests
             mock.CallBase = true;
             var ta = mock.Object;
             ta.ExecuteAsync(null);
+            mock.Setup(m => m.ExecuteAsync(null)).Verifiable();
             mock.Verify(m => m.ExecuteAsync(null), Times.Once());
         }
+
 
         [TestMethod()]
         public void ExecuteTest()
@@ -30,6 +32,7 @@ namespace OpenE6B.Classes.Tests
             mock.CallBase = true;
             var ta = mock.Object;
             ta.Execute(null);
+            mock.Setup(m => m.Execute(null)).Verifiable();
             mock.Verify(m => m.Execute(null), Times.Once());
         }
 

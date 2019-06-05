@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using OpenE6B.Annotations;
+//using OpenE6B.Annotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace OpenE6B.Classes
@@ -16,7 +16,7 @@ namespace OpenE6B.Classes
         Task ExecuteAsync(object parameter);
         
     }
-    
+
     public abstract class AsyncCommandBase : IAsyncCommand
     {
         public abstract bool CanExecute(object parameter);
@@ -25,34 +25,39 @@ namespace OpenE6B.Classes
         {
             await ExecuteAsync(parameter);
         }
+        [ExcludeFromCodeCoverage]
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+        [ExcludeFromCodeCoverage]
         protected void RaiseCanExecuteChanged()
         {
             CommandManager.InvalidateRequerySuggested();
         }
     }
 
-    
+    [ExcludeFromCodeCoverage]
     public class AsyncCommand<TResult> : AsyncCommandBase, INotifyPropertyChanged
     {
         private readonly Func<Task<TResult>> _command;
         private NotifyTaskCompletion<TResult> _execution;
 
+        [ExcludeFromCodeCoverage]
         public AsyncCommand(Func<Task<TResult>> command)
         {
             _command = command;
         }
 
+        [ExcludeFromCodeCoverage]
         public override bool CanExecute(object parameter)
         {
 
             return Execution == null || Execution.IsCompleted;
         }
 
+        [ExcludeFromCodeCoverage]
         public override async Task ExecuteAsync(object parameter)
         {
             Execution = new NotifyTaskCompletion<TResult>(_command());
@@ -61,6 +66,7 @@ namespace OpenE6B.Classes
             RaiseCanExecuteChanged();
         }
 
+        [ExcludeFromCodeCoverage]
         public NotifyTaskCompletion<TResult> Execution
         {
             get { return _execution; }
@@ -73,6 +79,7 @@ namespace OpenE6B.Classes
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [ExcludeFromCodeCoverage]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

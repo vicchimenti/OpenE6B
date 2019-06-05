@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using OpenE6B.Annotations;
+//using OpenE6B.Annotations;
 using OpenE6B.Classes;
 using OpenE6B.Pages;
 
@@ -42,10 +43,14 @@ namespace OpenE6B.ViewModels
                 OnPropertyChanged();
             }
         }
+        [ExcludeFromCodeCoverage]
         public Metar Metar { get; set; }
+        [ExcludeFromCodeCoverage]
         public IAsyncCommand GetMetarCommand { get; set; }
+        [ExcludeFromCodeCoverage]
         public ICommand MainMenuCommand { get; set; }
 
+        [ExcludeFromCodeCoverage]
         public bool IsButtonEnabled
         {
             get
@@ -73,6 +78,7 @@ namespace OpenE6B.ViewModels
             return !string.IsNullOrWhiteSpace(StationId) && StationId.Length == 4;
         }
 
+        [ExcludeFromCodeCoverage]
         public void GoToMainMenu(object param)
         {
             var frame = UIHelper.FindVisualParent<Frame>(param as DependencyObject);
@@ -81,7 +87,7 @@ namespace OpenE6B.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        //[NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

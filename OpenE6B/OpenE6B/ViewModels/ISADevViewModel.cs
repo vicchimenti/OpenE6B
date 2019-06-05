@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using OpenE6B.Annotations;
+// using OpenE6B.Annotations;
 using OpenE6B.Classes;
 using OpenE6B.Pages;
 
@@ -15,6 +16,7 @@ namespace OpenE6B.ViewModels
         private int _altitude;
         private string _result;
         //Displayed result of the calculation
+        [ExcludeFromCodeCoverage]
         public string Result
         {
             get { return _result; }
@@ -50,7 +52,9 @@ namespace OpenE6B.ViewModels
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public ICommand CalculateDeviationCommand { get; set; }
+        [ExcludeFromCodeCoverage]
         public ICommand MainMenuCommand { get; set; }
 
         //Contructor
@@ -72,6 +76,7 @@ namespace OpenE6B.ViewModels
             Result = calculator.GetDeviation(Altitude, TemperatureC);
         }
 
+        [ExcludeFromCodeCoverage]
         public void GoToMainMenu(object param)
         {
             var frame = UIHelper.FindVisualParent<Frame>(param as DependencyObject);
@@ -80,7 +85,8 @@ namespace OpenE6B.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        //[NotifyPropertyChangedInvocator]
+        [ExcludeFromCodeCoverage]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

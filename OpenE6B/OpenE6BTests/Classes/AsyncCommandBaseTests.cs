@@ -16,29 +16,32 @@ namespace OpenE6B.Classes.Tests
         // AsyncCommandBase acb = new AsyncCommandBase();
 
         [TestMethod()]
-        public void ExecuteTest()
+        public void AsyncCmdBaseExecuteTest()
         {   
             var mock = new Mock<AsyncCommandBase>();
             mock.CallBase = true;
             var ta = mock.Object;
             ta.Execute(null);
+            mock.Setup(m => m.Execute(null)).Verifiable();
             mock.Verify(m => m.Execute(null), Times.Once());         
 
         }
 
         //[TestMethod()]
-        //public void ExecuteTest1()
+        //public void AsyncCmdBaseCanExecuteChangedTest()
         //{
         //    var mock = new Mock<AsyncCommandBase>();
         //    mock.CallBase = true;
         //    var ta = mock.Object;
-        //    ta.Execute(null);
+            
+        //    ta.CanExecuteChanged()
+        //    mock.Setup(m => m.Execute(null)).Verifiable();
         //    mock.Verify(m => m.Execute(null), Times.Once());
 
         //}
 
         [TestMethod()]
-        public void CanExecuteTest()
+        public void AsyncCmdBaseCanExecuteTest()
         {
             var mock = new Mock<AsyncCommandBase>();
             mock.CallBase = true;
@@ -49,7 +52,7 @@ namespace OpenE6B.Classes.Tests
         }
 
         [TestMethod()]
-        public void CanExecuteAsyncTest()
+        public void AsyncCmdBaseCanExecuteAsyncTest()
         {
             var mock = new Mock<AsyncCommandBase>();
             mock.CallBase = true;

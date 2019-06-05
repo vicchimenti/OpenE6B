@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using OpenE6B.Annotations;
+// using OpenE6B.Annotations;
 using OpenE6B.Classes;
 using OpenE6B.Pages;
 
@@ -54,6 +55,7 @@ namespace OpenE6B.ViewModels
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public string Result
         {
             get { return _result; }
@@ -74,12 +76,14 @@ namespace OpenE6B.ViewModels
             MainMenuCommand = new RelayCommand(GoToMainMenu);
         }
 
+        [ExcludeFromCodeCoverage]
         private void GoToMainMenu(object param)
         {
             var frame = UIHelper.FindVisualParent<Frame>(param as DependencyObject);
             frame.Content = new MainMenu();
         }
 
+        [ExcludeFromCodeCoverage]
         private void CalculateWind(object param)
         {
             var calc = new WindComponentSolver();
@@ -88,7 +92,7 @@ namespace OpenE6B.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
+        // [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

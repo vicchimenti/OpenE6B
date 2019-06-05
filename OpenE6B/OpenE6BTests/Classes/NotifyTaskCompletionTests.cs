@@ -2,6 +2,7 @@
 using OpenE6B.Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,14 @@ namespace OpenE6B.Classes.Tests
     public class NotifyTaskCompletionTests
     {
   
-        [TestMethod()]
-        public void NotifyTaskCompletionTest()
-        {
-            // Assert.Fail();
-        }
+        //[TestMethod()]
+        //public void NotifyTaskCompletionTest()
+        //{
+            
+        //    var mock = new Mock<INotifyPropertyChanged>();
+        //    var ta = mock.Object;
+
+
+        //}
     }
 }

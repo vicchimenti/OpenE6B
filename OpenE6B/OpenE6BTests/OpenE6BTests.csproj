@@ -85,7 +85,9 @@
     <Compile Include="Converters\NullToVisibilityConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\StringToStationValidationRuleTests.cs" />
+    <Compile Include="ViewModels\IsaDevViewModelTests.cs" />
     <Compile Include="ViewModels\MetarTafViewModelTests.cs" />
+    <Compile Include="ViewModels\WindCompViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenE6B\OpenE6B.csproj">

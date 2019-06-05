@@ -46,6 +46,26 @@ namespace OpenE6B.Classes.Tests
         }
 
         [TestMethod()]
+        public void GetMetarTest()
+        {
+            var mock = new Mock<MetarRetriever>();
+
+            string station = "ksea";
+
+            var ta = mock.Object;
+            // var metar = helper(station);
+            helper(station);
+
+        }
+
+        private static async void helper(string station)
+        {
+            var mock = new Mock<MetarRetriever>();
+            var metar = await mock.Object.GetMetar(station);
+            //return Metar;
+        }
+
+        [TestMethod()]
         public void ConvertSkyConditionFewTest()
         {
             // Testing a private method
@@ -117,13 +137,11 @@ namespace OpenE6B.Classes.Tests
                 if (metarElement == null)
                     throw new AirportNotFoundException("Invalid Station ID Entered: No METARs found");
             }
-            catch
+            catch (Exception e)
             {
                 //  Expected exception caught!!!
-                return;
+                Assert.AreEqual("Invalid Station ID Entered: No METARs found", e.Message);
             }
-
-            Assert.Fail("Expected AirportNotFoundException not caught!");
             
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenE6B.Classes;
+using OpenE6B.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace OpenE6B.Classes.Tests
     [TestClass()]
     public class RelayCommandTests
     {
-        // RelayCommand rc = new RelayCommand(null);
         [TestMethod()]
         public void RelayCommandNullActionTest()
         {
@@ -20,13 +20,11 @@ namespace OpenE6B.Classes.Tests
             {
                 RelayCommand rc = new RelayCommand(null);
             }
-            catch (NotImplementedException)
+            catch (NotImplementedException e)
             {
-                //  Expected exception caught!!!
-                return;
+                // Expected exception caught!!!
+                Assert.AreEqual("Not implemented", e.Message);
             }
-
-            Assert.Fail("Expected NotImplementedException not caught!");
 
         }
 
@@ -40,31 +38,45 @@ namespace OpenE6B.Classes.Tests
             }
             catch (NotImplementedException)
             {
-                //  No exception is expected as it is swalloed.
+                //  No exception is expected as it is swallowed.
                 Assert.Fail("NotImplementedException not expected!");
             }
-
-            //Assert.That
 
         }
 
 
-        //[TestMethod()]
-        //public void RelayCommandTest1()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        public void RelayCmdExecuteTest()
+        {
+            try
+            {
+                RelayCommand rc = new RelayCommand(null, null);
+                rc.Execute(null);
+            }
+            catch (Exception e)
+            {
+                //  expected Exception caught!
+                Assert.AreEqual("Object reference not set to an instance of an object.", e.Message);
+                //return;
+            }
 
-        //[TestMethod()]
-        //public void ExecuteTest()
-        //{
-        //    Assert.Fail();
-        //}
+        }
 
-        //[TestMethod()]
-        //public void CanExecuteTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [TestMethod()]
+        public void RelayCmdCanExecuteTest()
+        {
+            RelayCommand rc = new RelayCommand(null, null);
+          
+            Assert.AreEqual(true, rc.CanExecute(null));
+        }
+
+        [TestMethod()]
+        public void RelayCmdInvalidCanExecuteTest()
+        {
+            RelayCommand rc = new RelayCommand(null, null);
+            var privateObject = new PrivateObject(rc);
+ 
+            Assert.AreEqual(null, privateObject.Invoke("InvalidateCanExecute"));
+        }
     }
-}
+    }
